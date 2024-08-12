@@ -1,0 +1,6 @@
+.vs/
+packages/
+obj/
+.idea/
+bin/
+appsettings.Production.json

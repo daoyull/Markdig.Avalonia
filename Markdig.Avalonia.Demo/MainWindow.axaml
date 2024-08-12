@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:avalonia="clr-namespace:Markdig.Avalonia;assembly=Markdig.Avalonia"
+        xmlns:demo="clr-namespace:Markdig.Avalonia.Demo"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Markdig.Avalonia.Demo.MainWindow"
+        Title="Markdig.Avalonia.Demo"
+        x:DataType="demo:MainViewModel">
+    <Design.DataContext>
+        <demo:MainViewModel />
+    </Design.DataContext>
+    <Window.Styles>
+        <Style Selector="Border.Card">
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Margin" Value="20" />
+            <Setter Property="BorderBrush" Value="Gainsboro" />
+            <Setter Property="BorderThickness" Value="1"></Setter>
+        </Style>
+    </Window.Styles>
+    <ScrollViewer>
+        <StackPanel>
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+              <Button Content="Load File"  Command="{Binding LoadMarkdownCommand}"></Button>
+              <Button Content="Empty"  Command="{Binding EmptyCommand}"></Button>
+          </StackPanel>
+            <Border Classes="Card">
+                <avalonia:MarkView Text="{Binding Text}" />
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Window>

@@ -1,0 +1,17 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <StyleInclude Source="HeadingBlock.axaml"></StyleInclude>
+    <StyleInclude Source="FencedCodeBlock.axaml"></StyleInclude>
+    <StyleInclude Source="LinkInline.axaml"></StyleInclude>
+    <StyleInclude Source="Paragraph.axaml"></StyleInclude>
+    <StyleInclude Source="Inline.axaml"></StyleInclude>
+    <StyleInclude Source="CodeInline.axaml"></StyleInclude>
+    <StyleInclude Source="Quote.axaml"></StyleInclude>
+    <StyleInclude Source="ThematicBreak.axaml"></StyleInclude>
+</Styles>

@@ -1,0 +1,32 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style Selector="StackPanel.LinkInlineText">
+        <Style Selector="^ TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource LinkUnderLinePointerOverColor}" />
+        </Style>
+
+        <Style Selector="^ Border.LinkInlineTextUnderLine">
+            <Setter Property="Height" Value="1" />
+        </Style>
+
+        <Style Selector="^:pointerover">
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Style Selector="^  Border.LinkInlineTextUnderLine">
+                <Setter Property="Background" Value="{DynamicResource LinkUnderLinePointerOverColor}" />
+                <Style.Animations>
+                    <Animation Duration="0:0:0.3">
+                        <KeyFrame Cue="0%">
+                            <Setter Property="Width" Value="0" />
+                        </KeyFrame>
+                        <KeyFrame Cue="100%">
+                            <Setter Property="Width" Value="{Binding $parent[StackPanel].Bounds.Width}" />
+                        </KeyFrame>
+                    </Animation>
+                </Style.Animations>
+            </Style>
+        </Style>
+    </Style>
+
+
+</Styles>

@@ -1,0 +1,36 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style Selector="Border.FencedCode">
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Background" Value="#1f1f1f" />
+        <Setter Property="Margin" Value="0 15 0 15" />
+        <Setter Property="CornerRadius" Value="6" />
+
+        <Style Selector="^ Button.FencedCodeCopy">
+            <Setter Property="IsVisible" Value="False" />
+            <Setter Property="Height" Value="24" />
+            <Setter Property="Content" Value="Copy" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="MinHeight" Value="0" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Padding" Value="5 2 5 2" />
+            <Setter Property="Margin" Value="0,-6,-6,0" />
+            <Setter Property="Background" Value="#50EC4D8D" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Style Selector="^:pointerover /template/ContentPresenter">
+                <Setter Property="Background" Value="#80EC4D8D" />
+                <Setter Property="Foreground" Value="White" />
+            </Style>
+            <Style Selector="^:pressed /template/ContentPresenter">
+                <Setter Property="Background" Value="#EC4D8D" />
+                <Setter Property="Foreground" Value="White" />
+            </Style>
+        </Style>
+
+        <Style Selector="^:pointerover Button.FencedCodeCopy">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+    </Style>
+</Styles>

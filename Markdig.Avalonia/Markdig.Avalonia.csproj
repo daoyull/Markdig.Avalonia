@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Avalonia" Version="11.1.2" />
+      <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.1.2" />
+      <PackageReference Include="Avalonia.HtmlRenderer" Version="11.0.0" />
+      <PackageReference Include="Markdig" Version="0.37.0" />
+      <PackageReference Include="TextMateSharp" Version="1.0.61" />
+      <PackageReference Include="TextMateSharp.Grammars" Version="1.0.61" />
+    </ItemGroup>
+
+</Project>

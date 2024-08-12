@@ -1,0 +1,20 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <Style Selector="Run.Bold">
+        <Setter Property="FontWeight" Value="ExtraBold"></Setter>
+    </Style> 
+    
+    <Style Selector="Run.Italics">
+        <Setter Property="FontStyle" Value="Italic"></Setter>
+    </Style>
+    
+    <Style Selector="Run.DeleteLine">
+        <Setter Property="TextDecorations" Value="Strikethrough"></Setter>
+    </Style>
+</Styles>

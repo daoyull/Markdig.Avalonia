@@ -1,0 +1,7 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style Selector="Run.CodeInline">
+        <Setter Property="Background" Value="{DynamicResource InlineBackGround}"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource InlineForeground}"></Setter>
+    </Style>
+</Styles>
