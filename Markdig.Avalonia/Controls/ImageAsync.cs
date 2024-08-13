@@ -13,14 +13,12 @@ public class ImageAsync : Image
         UrlProperty.Changed.AddClassHandler<ImageAsync>((image, args) => image.HandleUrlChanged(image, args));
     }
 
-    private void HandleUrlChanged(ImageAsync image, AvaloniaPropertyChangedEventArgs args)
+    protected virtual void HandleUrlChanged(ImageAsync image, AvaloniaPropertyChangedEventArgs args)
     {
         if (args.NewValue is not string url || string.IsNullOrEmpty(url))
         {
             return;
         }
-
-        image.Stretch = Stretch.None;
 
         ThreadPool.QueueUserWorkItem(LoadImage);
 
@@ -49,12 +47,7 @@ public class ImageAsync : Image
 
             if (bitmap != null)
             {
-                Dispatcher.UIThread.Invoke(() =>
-                {
-                    image.MaxHeight = bitmap.PixelSize.Height;
-                    image.MaxWidth = bitmap.PixelSize.Width;
-                    image.Source = bitmap;
-                });
+                Dispatcher.UIThread.Invoke(() => { image.Source = bitmap; });
             }
         }
     }

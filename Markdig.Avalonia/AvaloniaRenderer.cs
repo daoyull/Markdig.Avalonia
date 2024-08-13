@@ -15,34 +15,45 @@ namespace Markdig.Avalonia;
 public class AvaloniaRenderer : RendererBase, IDisposable
 {
     private readonly Stack<Panel> _stack = new();
+    
 
-    public AvaloniaRenderer()
+    private static Action<ObjectRendererCollection> _rendererCollectionAction = DefaultRenderer;
+
+    private static void DefaultRenderer(ObjectRendererCollection objectRenderer)
     {
-        ObjectRenderers.Add(new ListRenderer());
-        ObjectRenderers.Add(new HeadingRenderer());
-        ObjectRenderers.Add(new ParagraphRenderer());
-        ObjectRenderers.Add(new FencedCodeRenderer());
-        // ObjectRenderers.Add(new MathBlock());
-        // ObjectRenderers.Add(new YamlFrontMatterBlock());
-        ObjectRenderers.Add(new QuoteBlockRenderer());
-        ObjectRenderers.Add(new ThematicBreakRenderer());
-        ObjectRenderers.Add(new HtmlBlockRenderer());
+        objectRenderer.Add(new ListRenderer());
+        objectRenderer.Add(new HeadingRenderer());
+        objectRenderer.Add(new ParagraphRenderer());
+        objectRenderer.Add(new FencedCodeRenderer());
+        // objectRenderer.Add(new MathBlock());
+        // objectRenderer.Add(new YamlFrontMatterBlock());
+        objectRenderer.Add(new QuoteBlockRenderer());
+        objectRenderer.Add(new ThematicBreakRenderer());
+        objectRenderer.Add(new HtmlBlockRenderer());
 
         // Default inline renderers
-        ObjectRenderers.Add(new AutolinkInlineRenderer());
-        ObjectRenderers.Add(new CodeInlineRenderer());
-        ObjectRenderers.Add(new EmphasisInlineRenderer());
+        objectRenderer.Add(new AutolinkInlineRenderer());
+        objectRenderer.Add(new CodeInlineRenderer());
+        objectRenderer.Add(new EmphasisInlineRenderer());
         // ObjectRenderers.Add(new HtmlEntityInlineRenderer());
-        ObjectRenderers.Add(new LinkInlineRenderer());
-        ObjectRenderers.Add(new LiteralInlineRenderer());
+        objectRenderer.Add(new LinkInlineRenderer());
+        objectRenderer.Add(new LiteralInlineRenderer());
 
         // Extension renderers
-        ObjectRenderers.Add(new TableRenderer());
+        objectRenderer.Add(new TableRenderer());
         // ObjectRenderers.Add(new TaskListRenderer());
     }
 
+    public static void SetRendererCollectionAction(Action<ObjectRendererCollection> action)
+    {
+        _rendererCollectionAction = action;
+    }
+
+
     public object Render(MarkdownObject markdownObject, ThemeName themeName)
     {
+        ObjectRenderers.Clear();
+        _rendererCollectionAction.Invoke(ObjectRenderers);
         var allMarkObj = markdownObject.Descendants().ToList();
         var fencedCodeBlock = allMarkObj.Where(it => it is FencedCodeBlock)
             .Cast<FencedCodeBlock>().ToList();

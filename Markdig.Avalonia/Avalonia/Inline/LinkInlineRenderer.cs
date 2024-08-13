@@ -1,8 +1,5 @@
 ﻿using Avalonia.Controls;
-using Avalonia.Controls.Templates;
 using Avalonia.Layout;
-using Avalonia.Markup.Xaml.Templates;
-using Avalonia.Media;
 using Avalonia.Styling;
 using Markdig.Avalonia.Controls;
 using Markdig.Syntax.Inlines;
@@ -11,6 +8,11 @@ namespace Markdig.Avalonia.Avalonia.Inline;
 
 public class LinkInlineRenderer : AvaloniaObjectRenderer<LinkInline>
 {
+    protected virtual ImageAsync CreateImageAsync()
+    {
+        return new ImageAsync();
+    }
+
     protected override void Write(AvaloniaRenderer renderer, LinkInline mark)
     {
         if (string.IsNullOrEmpty(mark.Url))
@@ -22,9 +24,8 @@ public class LinkInlineRenderer : AvaloniaObjectRenderer<LinkInline>
         {
             var border = new Border();
             border.Classes.Add(nameof(LinkInline) + "Image");
-            var image = new ImageAsync();
+            var image = CreateImageAsync();
             image.Url = mark.Url;
-            image.Stretch = Stretch.UniformToFill;
             border.Child = image;
             renderer.WriteControl(border);
         }
